@@ -1,14 +1,11 @@
 import express, { Request, Response } from "express";
 
+import { router } from "./routes/login";
+
 const app = express();
 
-app.get("/", (req: Request, res: Response) => {
-  res.send(`
-        <div>
-            <h1>Hi There!</h1>
-        </div>
-    `);
-});
+app.use(express.urlencoded({ extended: true }));
+app.use(router);
 
 const port = 3000;
 app.listen(port, () => {
